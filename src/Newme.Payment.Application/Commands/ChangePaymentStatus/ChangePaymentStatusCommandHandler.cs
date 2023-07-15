@@ -46,7 +46,7 @@ namespace Newme.Payment.Application.Commands.ChangePaymentStatus
                 totalPrice: payment.AmountToBePaid
             );
 
-            _messageBus.Publish(sentEvent, "purchase-order-payment-resolved");
+            _messageBus.Publish(sentEvent, PaymentResolvedPurchaseOrderSentEvent.Name);
 
             _logger.LogInformation($"{nameof(ChangePaymentStatusCommandHandler<T>)} successfully completed");
 

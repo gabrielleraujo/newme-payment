@@ -20,6 +20,9 @@ namespace Newme.Payment.Application.Subscribers.Events
             TotalPrice = totalPrice;
         }
 
+        [JsonIgnore]
+        public static string Name => "purchase-order-payment-resolved";
+
         [JsonProperty("id")]
         public Guid Id { get; private set; }
 

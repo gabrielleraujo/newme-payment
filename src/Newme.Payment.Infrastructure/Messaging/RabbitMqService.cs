@@ -10,7 +10,7 @@ namespace Newme.Payment.Infrastructure.Messaging
     {
         private readonly IConnection _connection;
         private readonly IModel _channel;
-        private const string _exchange = "purchase-service";
+        private const string _exchange = "payment-service";
 
         public RabbitMqService(IConfiguration configuration)
         {
@@ -18,7 +18,7 @@ namespace Newme.Payment.Infrastructure.Messaging
                 HostName = "localhost"
             };
 
-            _connection = connectionFactory.CreateConnection("purchase-service-publisher");
+            _connection = connectionFactory.CreateConnection("payment-service-publisher");
 
             _channel = _connection.CreateModel();
         }
