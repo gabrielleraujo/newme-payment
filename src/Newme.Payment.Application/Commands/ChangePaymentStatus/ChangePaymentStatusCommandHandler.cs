@@ -3,6 +3,8 @@ using FluentValidation.Results;
 using Microsoft.Extensions.Logging;
 using Newme.Payment.Domain.Entities;
 using Newme.Payment.Domain.Repositories;
+using Newme.Payment.Infrastructure.Messaging;
+using Newme.Payment.Application.Subscribers.Events;
 
 namespace Newme.Payment.Application.Commands.ChangePaymentStatus
 {
@@ -11,12 +13,15 @@ namespace Newme.Payment.Application.Commands.ChangePaymentStatus
         IRequestHandler<ChangePaymentStatusCommand<T>, ValidationResult> where T : PaymentBase
     {
         private readonly IBaseRepository<T> _repository;
+        private readonly IMessageBusServer _messageBus;
 
         public ChangePaymentStatusCommandHandler(
             ILogger<ChangePaymentStatusCommandHandler<T>> logger,
-            IBaseRepository<T> repository) : base(logger)
+            IBaseRepository<T> repository,
+            IMessageBusServer messageBus) : base(logger)
         {
             _repository = repository;
+            _messageBus = messageBus;
         }
         
         public async Task<ValidationResult> Handle(ChangePaymentStatusCommand<T> command, CancellationToken cancellationToken)
@@ -29,6 +34,19 @@ namespace Newme.Payment.Application.Commands.ChangePaymentStatus
                 return command.ValidationResult;
             }
             await _repository.UpdateAsync(command.Id, command.Status, x => x.Status);
+
+            var payment = await _repository.GetByIdAsync(command.Id);
+
+            var sentEvent = new PaymentResolvedPurchaseOrderSentEvent(
+                id: Guid.NewGuid(),
+                purchaseId: payment.PurchaseId,
+                buyerId: payment.PayerId,
+                paymentId: payment.Id,
+                isPaymentAuthorized: command.Status == EPaymentStatus.AuthorizedPayment,
+                totalPrice: payment.AmountToBePaid
+            );
+
+            _messageBus.Publish(sentEvent, "purchase-order-payment-resolved");
 
             _logger.LogInformation($"{nameof(ChangePaymentStatusCommandHandler<T>)} successfully completed");
 
