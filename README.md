@@ -1,4 +1,4 @@
-# Payment
+# newme-psayment
 
 #### Rabbitmq
 - To enable rabbitmq run the command below on terminal.
