@@ -32,8 +32,7 @@ namespace Newme.Payment.Application.Commands.RegisterVouncherForPayer
             var exchangeVouncher = new ExchangeVouncher(
                 id: Guid.NewGuid(),
                 payerId: command.Event.BuyerId,
-                balance: command.Event.TotalPrice,
-                expiryDate: DateTime.Now.AddMonths(6)
+                balance: command.Event.TotalPrice
             );
 
             await _repository.AddAsync(exchangeVouncher);

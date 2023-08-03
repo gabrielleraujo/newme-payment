@@ -10,7 +10,8 @@ namespace Newme.Payment.Application.Commands.RegisterDebitCardPayment
             Guid purchaseId, 
             double amountToBePaid,
             string number,
-            string agency) : base(payerId, purchaseId, amountToBePaid, number, agency)
+            string code,
+            DateTime expiration) : base(payerId, purchaseId, amountToBePaid, number, code, expiration)
         {
         }
 

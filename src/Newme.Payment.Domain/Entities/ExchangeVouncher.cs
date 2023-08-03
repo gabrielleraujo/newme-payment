@@ -5,12 +5,11 @@ namespace Newme.Payment.Domain.Entities
         public ExchangeVouncher(
             Guid id,
             Guid payerId,
-            double balance,
-            DateTime expiryDate) : base(id)
+            double balance) : base(id)
         {
             Balance = balance;
-            ExpiryDate = expiryDate;
             PayerId = payerId;
+            ExpiryDate = DateTime.Now.AddMonths(6);
         }
 
         public Guid PayerId { get; private set; }

@@ -14,7 +14,8 @@ namespace Newme.Payment.Infrastructure.Persistence.Mappers
                     classMap.AutoMap();
                     classMap.SetIgnoreExtraElements(true);
                     classMap.MapMember(p => p.Number).SetElementName("number");
-                    classMap.MapMember(p => p.Agency).SetElementName("agency");
+                    classMap.MapMember(p => p.Code).SetElementName("code");
+                    classMap.MapMember(p => p.Expiration).SetElementName("expiration");
                 });
             }
         }

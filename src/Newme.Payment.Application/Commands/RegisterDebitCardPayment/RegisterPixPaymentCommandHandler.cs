@@ -35,7 +35,8 @@ namespace Newme.Payment.Application.Commands.RegisterDebitCardPayment
                 purchaseId: command.PurchaseId, 
                 amountToBePaid: command.AmountToBePaid,
                 number: command.Number,
-                agency: command.Agency
+                code: command.Code,
+                expiration: command.Expiration
             );
 
             await _repository.AddAsync(payment);

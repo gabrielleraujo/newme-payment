@@ -7,13 +7,16 @@
 			Guid purchaseId, 
 			double amountToBePaid,
 			string number,
-			string agency) : base(payerId, purchaseId, amountToBePaid)
+			string code,
+			DateTime expiration) : base(payerId, purchaseId, amountToBePaid)
         {
 			Number = number;
-			Agency = agency;
+			Code = code;
+			Expiration = expiration;
         }
 
         public string Number { get; set; }
-		public string Agency { get; set; }
+		public string Code { get; set; }
+		public DateTime Expiration { get; set; }
 	}
 }

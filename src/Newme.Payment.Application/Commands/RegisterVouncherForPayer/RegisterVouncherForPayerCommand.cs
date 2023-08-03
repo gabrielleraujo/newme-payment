@@ -9,11 +9,9 @@ namespace Newme.Payment.Application.Commands.RegisterVouncherForPayer
         public RegisterVouncherForPayerCommand(
             PurchaseRefundAsExchangeVoucherReceivedEvent @event)
         {
-            Id = Guid.NewGuid();
             Event = @event;
         }
 
-        public Guid Id { get; private set; }
         public PurchaseRefundAsExchangeVoucherReceivedEvent Event { get; private set; }
     }
 }

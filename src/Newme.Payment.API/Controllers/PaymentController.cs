@@ -1,3 +1,5 @@
+using System.Net;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Newme.Payment.Application.InputModels;
 using Newme.Payment.Application.Services;
@@ -18,30 +20,42 @@ public class PaymentController : ControllerBase
     }
 
     [HttpPost("credit-card")]
-    public async Task<IActionResult> AdRegisterCreditCardPaymentd(RegisterCreditCardPaymentInputModel inputModel)
+    [ProducesResponseType(typeof(void), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(ValidationResult), (int)HttpStatusCode.BadRequest)]
+    [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+    public async Task<IActionResult> RegisterCreditCardPaymentd(RegisterCreditCardPaymentInputModel inputModel)
     {
-        var result = await _application.RegisterCreditCardPayment(inputModel);
-        return NoContent();
+        var response = await _application.RegisterCreditCardPayment(inputModel);
+        return response.Errors.Count == 0 ? Ok() : BadRequest(response);
     }
 
     [HttpPost("debit-card")]
-    public async Task<IActionResult> ARegisterDebitCardPaymentdd(RegisterDebitCardPaymentInputModel inputModel)
+    [ProducesResponseType(typeof(void), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(ValidationResult), (int)HttpStatusCode.BadRequest)]
+    [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
+    public async Task<IActionResult> RegisterDebitCardPaymentdd(RegisterDebitCardPaymentInputModel inputModel)
     {
-        var result = await _application.RegisterDebitCardPayment(inputModel);
-        return NoContent();
+        var response = await _application.RegisterDebitCardPayment(inputModel);
+        return response.Errors.Count == 0 ? Ok() : BadRequest(response);
     }
 
     [HttpPost("pix")]
+    [ProducesResponseType(typeof(void), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(ValidationResult), (int)HttpStatusCode.BadRequest)]
+    [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     public async Task<IActionResult> RegisterPixPayment(RegisterPixPaymentInputModel inputModel)
     {
-        var result = await _application.RegisterPixPayment(inputModel);
-        return NoContent();
+        var response = await _application.RegisterPixPayment(inputModel);
+        return response.Errors.Count == 0 ? Ok() : BadRequest(response);
     }
 
     [HttpPost("change-status")]
+    [ProducesResponseType(typeof(void), (int)HttpStatusCode.NoContent)]
+    [ProducesResponseType(typeof(ValidationResult), (int)HttpStatusCode.BadRequest)]
+    [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
     public async Task<IActionResult> ChangeStatus(ChangePaymentStatusInputModel inputModel)
     {
-        var result = await _application.ChangeStatus(inputModel);
-        return NoContent();
+        var response = await _application.ChangeStatus(inputModel);
+        return response.Errors.Count == 0 ? NoContent() : BadRequest(response);
     }
 }

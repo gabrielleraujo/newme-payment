@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newme.Payment.Infrastructure.Persistence.Repositories;
-using Newme.Payment.Infrastructure.Messaging;
+using Newme.Payment.Domain.Messaging;
 using Newme.Payment.Domain.Repositories;
 using Newme.Payment.Infrastructure.Persistence;
 using Newme.Payment.Infrastructure.Consulting;
@@ -10,6 +10,7 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Bson;
 using Newme.Payment.Infrastructure.Persistence.Mappers;
+using Newme.Payment.Infrastructure.Messaging;
 
 namespace Newme.Payment.Infrastructure
 {

@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Newme.Payment.Domain\Newme.Payment.Domain.csproj" />
-    <ProjectReference Include="..\Newme.Payment.Infrastructure\Newme.Payment.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

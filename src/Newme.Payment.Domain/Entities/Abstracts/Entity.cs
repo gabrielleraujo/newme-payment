@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Newme.Payment.Domain.Entities
+﻿namespace Newme.Payment.Domain.Entities
 {
     public abstract class Entity
     {
@@ -12,7 +10,7 @@ namespace Newme.Payment.Domain.Entities
         }
 
         public Guid Id { get; private set; }
-        public DateTime CreateDate { get; set; }
-        public DateTime? UpdateDate { get; set; }
+        public DateTime CreateDate { get; private set; }
+        public DateTime? UpdateDate { get; protected set; }
     }
 }

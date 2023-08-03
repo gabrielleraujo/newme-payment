@@ -4,10 +4,11 @@
     {
         public DebitCard(Guid id,
             string number, 
-            string agency,
+            string code, 
+            DateTime expiration,
             Guid payerId,
             Guid purchaseId, 
-            double amountToBePaid) : base(id, number, agency, payerId, purchaseId, amountToBePaid)
+            double amountToBePaid) : base(id, number, code, expiration, payerId, purchaseId, amountToBePaid)
         { }
 
         public override double CalculateDiscount() => AmountToBePaid - (AmountToBePaid * 0.1);

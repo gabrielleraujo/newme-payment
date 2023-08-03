@@ -10,16 +10,18 @@ namespace Newme.Payment.Application.Commands.RegisterCreditCardPayment
             Guid purchaseId, 
             double amountToBePaid,
             string number,
-            string agency,
+            string code,
+            DateTime expiration,
             int numberInstallments,
 			int numberInstallmentsPaid,
 			double installmentValue,
-			double totalInterest) : base(payerId, purchaseId, amountToBePaid, number, agency)
+			double totalInterest) : base(payerId, purchaseId, amountToBePaid, number, code, expiration)
         {
 			NumberInstallments = numberInstallments;
 			NumberInstallmentsPaid = numberInstallmentsPaid;
 			InstallmentValue = installmentValue;
 			TotalInterest = totalInterest;
+            Expiration = Expiration;
         }
 
         public int NumberInstallments { get; private set; }

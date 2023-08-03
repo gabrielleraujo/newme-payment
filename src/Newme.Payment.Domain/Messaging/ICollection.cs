@@ -1,4 +1,4 @@
-namespace Newme.Payment.Infrastructure.Persistence
+namespace Newme.Payment.Domain.Messaging
 {
     public interface ICollection
     {

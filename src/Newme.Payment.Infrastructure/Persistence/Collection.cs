@@ -1,4 +1,5 @@
 using Newme.Payment.Domain.Entities;
+using Newme.Payment.Domain.Messaging;
 
 namespace Newme.Payment.Infrastructure.Persistence
 {

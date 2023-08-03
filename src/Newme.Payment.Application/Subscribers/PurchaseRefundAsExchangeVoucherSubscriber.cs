@@ -5,7 +5,7 @@ using RabbitMQ.Client.Events;
 using Newtonsoft.Json;
 using Microsoft.Extensions.DependencyInjection;
 using MediatR;
-using Newme.Payment.Infrastructure.Messaging;
+using Newme.Payment.Domain.Messaging;
 using Newme.Payment.Application.Subscribers.Events;
 using Newme.Payment.Application.Commands.RegisterVouncherForPayer;
 

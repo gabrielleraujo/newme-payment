@@ -27,7 +27,8 @@ namespace Newme.Payment.Application.AutoMapper
                     x.PurchaseId,
                     x.AmountToBePaid,
                     x.Number,
-                    x.Agency
+                    x.Code,
+                    x.Expiration
                 ));
 
             CreateMap<RegisterCreditCardPaymentInputModel, RegisterCreditCardPaymentCommand>()
@@ -36,7 +37,8 @@ namespace Newme.Payment.Application.AutoMapper
                     x.PurchaseId,
                     x.AmountToBePaid,
                     x.Number,
-                    x.Agency,
+                    x.Code,
+                    x.Expiration,
                     x.NumberInstallments,
                     x.NumberInstallmentsPaid,
                     x.InstallmentValue,

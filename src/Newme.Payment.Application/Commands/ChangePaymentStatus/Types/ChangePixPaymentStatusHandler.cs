@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Logging;
 using Newme.Payment.Domain.Entities;
 using Newme.Payment.Domain.Repositories;
-using Newme.Payment.Infrastructure.Messaging;
+using Newme.Payment.Domain.Messaging;
 
 namespace Newme.Payment.Application.Commands.ChangePaymentStatus.Types
 {

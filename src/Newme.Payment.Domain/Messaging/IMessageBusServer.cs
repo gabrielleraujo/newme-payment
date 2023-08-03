@@ -1,4 +1,4 @@
-namespace Newme.Payment.Infrastructure.Messaging
+namespace Newme.Payment.Domain.Messaging
 {
     public interface IMessageBusServer
     {

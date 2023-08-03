@@ -7,11 +7,12 @@
 			Guid purchaseId, 
 			double amountToBePaid,
 			string number,
-			string agency,
+			string code,
+			DateTime expiration,
 			int numberInstallments,
 			int numberInstallmentsPaid,
 			double installmentValue,
-			double totalInterest) : base(payerId, purchaseId, amountToBePaid, number, agency)
+			double totalInterest) : base(payerId, purchaseId, amountToBePaid, number, code, expiration)
         {
 			NumberInstallments = numberInstallments;
 			NumberInstallmentsPaid = numberInstallmentsPaid;
@@ -23,5 +24,6 @@
 		public int NumberInstallmentsPaid { get; set; }
 		public double InstallmentValue { get; set; }
 		public double TotalInterest { get; set; }
-	}
+        public DateTime Expiration { get; internal set; }
+    }
 }

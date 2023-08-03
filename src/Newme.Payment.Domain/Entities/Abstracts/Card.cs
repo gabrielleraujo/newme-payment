@@ -5,16 +5,19 @@
         public Card(
             Guid id, 
             string number, 
-            string agency,
+            string code,
+            DateTime expiration,
             Guid payerId,
             Guid purchaseId, 
             double amountToBePaid) : base(id, payerId, purchaseId, amountToBePaid)
         {
             Number = number;
-            Agency = agency;
+            Code = code;
+            Expiration = expiration;
         }
 
         public string Number { get; private set; }
-        public string Agency { get; private set; }
+        public string Code { get; private set; }
+        public DateTime Expiration { get; private set; }
     }
 }

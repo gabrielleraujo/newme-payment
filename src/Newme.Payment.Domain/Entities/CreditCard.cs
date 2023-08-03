@@ -5,14 +5,15 @@
         public CreditCard(
             Guid id,
             string number, 
-            string agency, 
+            string code, 
+            DateTime expiration,
             int numberInstallments, 
             int numberInstallmentsPaid, 
             double installmentValue, 
             double totalInterest,
             Guid payerId,
             Guid purchaseId, 
-            double amountToBePaid) : base(id, number, agency, payerId, purchaseId, amountToBePaid)
+            double amountToBePaid) : base(id, number, code, expiration, payerId, purchaseId, amountToBePaid)
         {
             NumberInstallments = numberInstallments;
             NumberInstallmentsPaid = numberInstallmentsPaid;

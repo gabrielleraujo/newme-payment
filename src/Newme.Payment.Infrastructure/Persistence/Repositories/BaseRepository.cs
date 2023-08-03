@@ -1,6 +1,7 @@
 using System.Linq.Expressions;
 using MongoDB.Driver;
 using Newme.Payment.Domain.Entities;
+using Newme.Payment.Domain.Messaging;
 using Newme.Payment.Domain.Repositories;
 
 namespace Newme.Payment.Infrastructure.Persistence.Repositories
